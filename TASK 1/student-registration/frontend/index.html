@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-wrap">
+      <section class="card">
+        <h1>Student Registration</h1>
+        <p class="subtitle">Register a student and view all records instantly.</p>
+
+        <form id="studentForm" novalidate>
+          <div class="grid">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" maxlength="100" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" maxlength="100" required />
+            </div>
+
+            <div class="field">
+              <label for="dob">Date of Birth</label>
+              <input id="dob" name="dob" type="date" required />
+            </div>
+
+            <div class="field">
+              <label for="department">Department</label>
+              <select id="department" name="department" required>
+                <option value="">Select department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="Business">Business</option>
+              </select>
+            </div>
+
+            <div class="field full-width">
+              <label for="phone">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                maxlength="15"
+                pattern="[0-9]{10,15}"
+                placeholder="Enter 10 to 15 digit phone"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn">Register Student</button>
+        </form>
+
+        <p id="message" class="message" aria-live="polite"></p>
+      </section>
+
+      <section class="card table-card">
+        <div class="table-header">
+          <h2>Registered Students</h2>
+          <button id="refreshBtn" class="secondary-btn" type="button">Refresh</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Department</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+              <tr>
+                <td colspan="6" class="empty">No students found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
