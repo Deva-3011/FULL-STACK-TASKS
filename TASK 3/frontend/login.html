@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login System</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="card-header">
+        <p class="eyebrow">Welcome back</p>
+        <h1 id="login-title">Login</h1>
+        <p class="subtitle">Sign in with your email and password.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+          <p class="error-message" id="emailError"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" />
+          <p class="error-message" id="passwordError"></p>
+        </div>
+
+        <button type="submit" id="loginButton">Login</button>
+        <p class="status-message" id="statusMessage"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

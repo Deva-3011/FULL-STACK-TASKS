@@ -1,0 +1,17 @@
+{
+  "name": "simple-login-system",
+  "version": "1.0.0",
+  "description": "Simple login system using HTML, CSS, JavaScript, Node.js, Express, and MySQL",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
