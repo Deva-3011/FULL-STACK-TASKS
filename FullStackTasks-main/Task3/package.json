@@ -1,0 +1,11 @@
+{
+  "name": "login-system",
+  "version": "1.0.0",
+  "description": "Simple Login System with Frontend and Backend",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,113 @@
+{
+  "cloud_providers": {
+    "AWS": {
+      "compute": {
+        "virtual_machines": "EC2",
+        "serverless": "Lambda",
+        "kubernetes": "EKS",
+        "paas": "Elastic Beanstalk"
+      },
+      "storage": {
+        "object": "S3",
+        "block": "EBS",
+        "file": "EFS",
+        "archive": "S3 Glacier"
+      },
+      "databases": {
+        "relational_managed": "RDS",
+        "cloud_native_relational": "Aurora",
+        "nosql": "DynamoDB",
+        "data_warehouse": "Redshift",
+        "cache": "ElastiCache"
+      },
+      "networking": {
+        "virtual_network": "VPC",
+        "load_balancer": "ELB",
+        "dns": "Route 53",
+        "cdn": "CloudFront",
+        "dedicated_link": "Direct Connect",
+        "api_gateway": "API Gateway"
+      },
+      "pricing": {
+        "free_tier": "12 months + always-free",
+        "reserved_discount_max_pct": 72,
+        "spot_discount_max_pct": 90,
+        "sample_4vcpu_16gb_monthly_usd": 138,
+        "billing_granularity": "per second"
+      }
+    },
+    "Google Cloud": {
+      "compute": {
+        "virtual_machines": "Compute Engine",
+        "serverless": "Cloud Functions",
+        "kubernetes": "GKE",
+        "paas": "App Engine"
+      },
+      "storage": {
+        "object": "Cloud Storage",
+        "block": "Persistent Disk",
+        "file": "Filestore",
+        "archive": "Cloud Storage Archive"
+      },
+      "databases": {
+        "relational_managed": "Cloud SQL",
+        "cloud_native_relational": "Cloud Spanner",
+        "nosql": "Firestore / Bigtable",
+        "data_warehouse": "BigQuery",
+        "cache": "Memorystore"
+      },
+      "networking": {
+        "virtual_network": "VPC",
+        "load_balancer": "Cloud Load Balancing",
+        "dns": "Cloud DNS",
+        "cdn": "Cloud CDN",
+        "dedicated_link": "Cloud Interconnect",
+        "api_gateway": "Apigee / Cloud Endpoints"
+      },
+      "pricing": {
+        "free_tier": "$300 credit (90 days) + always-free",
+        "reserved_discount_max_pct": 70,
+        "spot_discount_max_pct": 91,
+        "sample_4vcpu_16gb_monthly_usd": 134,
+        "billing_granularity": "per second",
+        "sustained_use_discount": true
+      }
+    },
+    "Azure": {
+      "compute": {
+        "virtual_machines": "Azure Virtual Machines",
+        "serverless": "Azure Functions",
+        "kubernetes": "AKS",
+        "paas": "App Service"
+      },
+      "storage": {
+        "object": "Blob Storage",
+        "block": "Managed Disks",
+        "file": "Azure Files",
+        "archive": "Archive Storage"
+      },
+      "databases": {
+        "relational_managed": "Azure SQL Database",
+        "cloud_native_relational": "SQL Hyperscale",
+        "nosql": "Cosmos DB",
+        "data_warehouse": "Synapse Analytics",
+        "cache": "Azure Cache for Redis"
+      },
+      "networking": {
+        "virtual_network": "VNet",
+        "load_balancer": "Azure Load Balancer",
+        "dns": "Azure DNS",
+        "cdn": "Azure CDN",
+        "dedicated_link": "ExpressRoute",
+        "api_gateway": "API Management"
+      },
+      "pricing": {
+        "free_tier": "$200 credit (30 days) + 12 months free",
+        "reserved_discount_max_pct": 72,
+        "spot_discount_max_pct": 90,
+        "sample_4vcpu_16gb_monthly_usd": 140,
+        "billing_granularity": "per minute"
+      }
+    }
+  }
+}

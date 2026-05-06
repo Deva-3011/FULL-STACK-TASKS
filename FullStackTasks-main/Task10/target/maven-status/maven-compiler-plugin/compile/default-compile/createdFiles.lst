@@ -1,0 +1,5 @@
+com\example\studentcrud\StudentApplication.class
+com\example\studentcrud\StudentRepository.class
+com\example\studentcrud\StudentController.class
+com\example\studentcrud\Student.class
+com\example\studentcrud\StudentService.class

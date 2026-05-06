@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background: #f5f5f5;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+
+        .highlight strong {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Order Management System</h1>
+            <p>Customer Orders, Products & Analytics Dashboard</p>
+        </header>
+
+        <div class="content">
+            <!-- Section 1: Order History -->
+            <section class="section">
+                <h2>Order History</h2>
+                <p style="color: #666; margin-bottom: 15px;">All customer orders displayed with product details (ordered by most recent first)</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>sarah@example.com</td>
+                            <td>USB Hub</td>
+                            <td>3</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-02-20 16:30</td>
+                        </tr>
+                        <tr>
+                            <td>Robert Wilson</td>
+                            <td>robert@example.com</td>
+                            <td>Mouse</td>
+                            <td>5</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-03-05 08:20</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Davis</td>
+                            <td>emily@example.com</td>
+                            <td>Monitor</td>
+                            <td>1</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-03-10 12:30</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Davis</td>
+                            <td>emily@example.com</td>
+                            <td>Keyboard</td>
+                            <td>2</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-02-28 15:45</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Brown</td>
+                            <td>michael@example.com</td>
+                            <td>Mouse</td>
+                            <td>1</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-03-01 10:00</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Brown</td>
+                            <td>michael@example.com</td>
+                            <td>Laptop</td>
+                            <td>1</td>
+                            <td>,200.00</td>
+                            <td>,200.00</td>
+                            <td>2026-01-25 13:10</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>sarah@example.com</td>
+                            <td>Monitor</td>
+                            <td>1</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-02-05 11:45</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>sarah@example.com</td>
+                            <td>Keyboard</td>
+                            <td>1</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-01-20 09:15</td>
+                        </tr>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>john@example.com</td>
+                            <td>Mouse</td>
+                            <td>2</td>
+                            <td>.00</td>
+                            <td>.00</td>
+                            <td>2026-02-10 14:20</td>
+                        </tr>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>john@example.com</td>
+                            <td>Laptop</td>
+                            <td>1</td>
+                            <td>,200.00</td>
+                            <td>,200.00</td>
+                            <td>2026-01-15 10:30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 2: Highest Value Order -->
+            <section class="section">
+                <h2>Highest Value Order</h2>
+                <p style="color: #666; margin-bottom: 15px;">Order with the maximum total price (using subquery)</p>
+                <div class="highlight">
+                    <strong>Customer:</strong> John Smith | <strong>Product:</strong> Laptop | <strong>Quantity:</strong> 1 | <strong>Order Value:</strong> ,200.00 | <strong>Date:</strong> 2026-01-15 10:30
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Order Value</th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>Laptop</td>
+                            <td>1</td>
+                            <td><strong style="color: #28a745; font-size: 1.1em;">,200.00</strong></td>
+                            <td>2026-01-15 10:30</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Brown</td>
+                            <td>Laptop</td>
+                            <td>1</td>
+                            <td><strong style="color: #28a745; font-size: 1.1em;">,200.00</strong></td>
+                            <td>2026-01-25 13:10</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="info-box">
+                    <h3>ℹ️ Query Details</h3>
+                    <p>This query uses a <strong>subquery</strong> to find the maximum order value: <code>WHERE o.total_price = (SELECT MAX(total_price) FROM Orders)</code></p>
+                </div>
+            </section>
+
+            <!-- Section 3: Most Active Customer -->
+            <section class="section">
+                <h2>Most Active Customer</h2>
+                <p style="color: #666; margin-bottom: 15px;">Customer(s) with the most orders (using subquery)</p>
+                <div class="highlight">
+                    <strong>Customer:</strong> Sarah Johnson | <strong>Total Orders:</strong> 4 | <strong>Total Spent:</strong> .00
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Total Orders</th>
+                            <th>Total Spent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sarah Johnson</strong></td>
+                            <td>sarah@example.com</td>
+                            <td><strong style="color: #667eea; font-size: 1.1em;">4</strong></td>
+                            <td>.00</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Davis</td>
+                            <td>emily@example.com</td>
+                            <td>2</td>
+                            <td>.00</td>
+                        </tr>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>john@example.com</td>
+                            <td>2</td>
+                            <td>,250.00</td>
+                        </tr>
+                        <tr>
+                            <td>Michael Brown</td>
+                            <td>michael@example.com</td>
+                            <td>2</td>
+                            <td>,225.00</td>
+                        </tr>
+                        <tr>
+                            <td>Robert Wilson</td>
+                            <td>robert@example.com</td>
+                            <td>1</td>
+                            <td>.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="info-box">
+                    <h3>ℹ️ Query Details</h3>
+                    <p>This query uses a <strong>subquery with GROUP BY</strong> to find the customer with maximum order count: <code>HAVING COUNT(o.id) = (SELECT COUNT(o2.id) FROM Orders o2 GROUP BY o2.customer_id ORDER BY COUNT(o2.id) DESC LIMIT 1)</code></p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Task 23 – Generated via Prompt Engineering.
+  Creates a secure S3 bucket with versioning, AES-256 encryption,
+  and an HTTPS-only bucket policy.
+
+# -------------------------------------------------------
+# Parameters
+# -------------------------------------------------------
+Parameters:
+  BucketNameSuffix:
+    Type: String
+    Default: task23-secure-bucket
+    Description: Suffix appended to the account ID to form the bucket name.
+
+# -------------------------------------------------------
+# Resources
+# -------------------------------------------------------
+Resources:
+
+  # S3 Bucket with versioning and server-side encryption
+  SecureS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${AWS::AccountId}-${BucketNameSuffix}"
+
+      # Enable versioning to protect against accidental deletion
+      VersioningConfiguration:
+        Status: Enabled
+
+      # Enforce AES-256 server-side encryption for all objects
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+      # Block all public access
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+      Tags:
+        - Key: Project
+          Value: Task23
+        - Key: ManagedBy
+          Value: CloudFormation
+
+  # Bucket policy: deny any request that does not use HTTPS (TLS)
+  SecureS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SecureS3Bucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: DenyNonHttps
+            Effect: Deny
+            Principal: "*"
+            Action: "s3:*"
+            Resource:
+              - !GetAtt SecureS3Bucket.Arn
+              - !Sub "${SecureS3Bucket.Arn}/*"
+            Condition:
+              Bool:
+                "aws:SecureTransport": "false"
+
+# -------------------------------------------------------
+# Outputs
+# -------------------------------------------------------
+Outputs:
+  BucketName:
+    Description: Name of the created S3 bucket
+    Value: !Ref SecureS3Bucket
+    Export:
+      Name: !Sub "${AWS::StackName}-BucketName"
+
+  BucketArn:
+    Description: ARN of the created S3 bucket
+    Value: !GetAtt SecureS3Bucket.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}-BucketArn"

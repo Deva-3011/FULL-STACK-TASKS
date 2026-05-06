@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Student Dashboard</h1>
+        </header>
+
+        <div class="controls-section">
+            <div class="control-group">
+                <label for="sortDropdown">Sort by:</label>
+                <select id="sortDropdown" class="dropdown">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="dob-newest">DOB (Newest)</option>
+                    <option value="dob-oldest">DOB (Oldest)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="departmentFilter">Filter by Department:</label>
+                <select id="departmentFilter" class="dropdown">
+                    <option value="">All Departments</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="count-section" id="countSection">
+            <!-- Count cards will be dynamically generated -->
+        </div>
+
+        <table class="students-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>DOB</th>
+                    <th>Department</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+                <!-- Student rows will be dynamically generated -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

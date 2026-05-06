@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Student Registration System</h1>
+            <p class="subtitle">Register new students and manage their information</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Registration Form Card -->
+            <div class="form-card">
+                <h2>Register New Student</h2>
+                
+                <!-- Message Alert -->
+                <div id="messageContainer" class="message-container"></div>
+
+                <!-- Registration Form -->
+                <form id="registrationForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Enter full name" 
+                            required
+                        >
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Enter email address" 
+                            required
+                        >
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input 
+                            type="date" 
+                            id="dob" 
+                            name="dob" 
+                            required
+                        >
+                        <span class="error-message" id="dobError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department *</label>
+                        <select id="department" name="department" required>
+                            <option value="">-- Select Department --</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Science">Science</option>
+                        </select>
+                        <span class="error-message" id="departmentError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="Enter phone number (10-15 digits)" 
+                            required
+                        >
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Register Student</button>
+                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                </form>
+            </div>
+
+            <!-- Students Table Card -->
+            <div class="table-card">
+                <h2>Registered Students</h2>
+                
+                <!-- Loading Spinner -->
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Loading students...</p>
+                </div>
+
+                <!-- Students Table -->
+                <div id="tableContainer" style="display: none;">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Date of Birth</th>
+                                <th>Department</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Students will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- No Students Message -->
+                <div id="noStudentsMessage" class="no-data-message">
+                    <p>No students registered yet. Register one to get started!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

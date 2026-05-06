@@ -1,0 +1,112 @@
+---
+# k8s-deployment.yaml
+# Kubernetes Deployment and Service for the Product Inventory REST API
+# Compatible with AWS EKS, GKE, and AKS
+# Generated via Vibe Coding – Task 24 (Prompt Version 3)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-api
+  labels:
+    app: product-api
+    version: "1.0"
+spec:
+  replicas: 2                      # Run 2 replicas for high availability
+  selector:
+    matchLabels:
+      app: product-api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0            # Zero-downtime deployments
+  template:
+    metadata:
+      labels:
+        app: product-api
+    spec:
+      # Run as the non-root user defined in the Dockerfile
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+
+      containers:
+        - name: product-api
+          image: product-api:latest   # Replace with your ECR/GCR/ACR image URI
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              name: http
+
+          # Load the JWT secret from a Kubernetes Secret
+          env:
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: product-api-secrets
+                  key: jwt-secret-key
+            - name: JWT_EXPIRY_HOURS
+              value: "24"
+
+          # Resource limits – prevent noisy-neighbour issues
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+
+          # Liveness probe – restart pod if app is unhealthy
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
+
+          # Readiness probe – only send traffic when app is ready
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+
+          # Drop all capabilities – run with minimal privileges
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+      # Spread pods across availability zones
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: product-api
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-api-service
+  labels:
+    app: product-api
+spec:
+  selector:
+    app: product-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      name: http
+  type: ClusterIP          # Use an Ingress controller for external HTTPS access
